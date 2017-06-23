@@ -35,25 +35,11 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 				<?php echo wpautop( esc_html( $instance['description'] ) ); ?>
 			</div>
 		<?php endif; ?>
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="POST" target="_blank">
-			<input type="hidden" name="cmd" value="_donations" />
-			<input type="hidden" name="business" value="<?php echo antispambot( $instance['email'] ); ?>" />
-			<?php if ( ! empty( $instance['purpose'] ) ): ?>
-				<input type="hidden" name="item_name" value="<?php echo $instance['purpose']; ?>" />
-			<?php endif; ?>
-			<?php if ( ! empty( $instance['amount'] ) ): ?>
-				<?php $amount = $instance['amount']; ?>
-			<?php else: ?>
-				<?php $amount = ''; ?>
-			<?php endif; ?>
-			$ <input type="text" name="amount" size="6" value="<?php echo $amount; ?>" required pattern="\d+(\.\d{2})?" placeholder="x.xx" />
-			<?php if ( ! empty( $instance['button_text'] ) ): ?>
-				<?php $button_text = $instance['button_text']; ?>
-			<?php else: ?>
-				<?php $button_text = static::$default_button_text; ?>
-			<?php endif; ?>
-			<button><?php echo $button_text; ?></button>
-		</form>
+		<?php if ( ! empty( $instance['button_text'] ) ): ?>
+			<?php bpd_frontend_form( $instance, $instance['button_text'] ); ?>
+		<?php else: ?>
+			<?php bpd_frontend_form( $instance, static::$default_button_text ); ?>
+		<?php endif; ?>
 		<?php echo $args['after_widget']; ?>
 		<?php
 	}
