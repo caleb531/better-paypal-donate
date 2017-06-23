@@ -3,7 +3,7 @@
 // Output the front-end <form> (for both the widget and shortcode)
 function bpd_frontend_form( $args, $button_text ) {
 	?>
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="POST" target="_blank">
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="POST" target="_blank" class="better-paypal-donate">
 		<input type="hidden" name="cmd" value="_donations" />
 		<input type="hidden" name="business" value="<?php echo antispambot( $args['email'] ); ?>" />
 		<?php if ( ! empty( $args['purpose'] ) ): ?>

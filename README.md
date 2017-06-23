@@ -37,10 +37,10 @@ Help support the work of missions around the globe.
 ### Note about styling
 
 This plugin adds no styling to the widget or shortcode beyond what your theme
-already styles. If you wish to apply custom styling to the widget, you can do so by targeting `.better-paypal-donate-widget` and its children via CSS:
+already styles. If you wish to apply custom styling to the widget, you can do so by targeting `form.better-paypal-donate` and its children via CSS:
 
 ```css
-.better-paypal-donate-widget button {
+form.better-paypal-donate button {
   border: solid 1px #390;
   background-color: #6c3;
   color: #fff;

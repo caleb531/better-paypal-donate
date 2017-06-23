@@ -12,7 +12,7 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 			'better_paypal_donate_widget',
 			'Better PayPal Donate',
 		 	array(
-				'classname'   => 'better-paypal-donate-widget',
+				'classname'   => 'better-paypal-donate',
 				'description' => 'A simple but customizeable PayPal donate widget'
 			)
 		);
