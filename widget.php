@@ -25,7 +25,37 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		// outputs the content of the widget
+		?>
+		<?php echo $args['before_widget']; ?>
+		<?php if ( ! empty( $instance['title'] ) ): ?>
+			<?php echo $args['before_title'], apply_filters( 'widget_title', $instance['title'] ), $args['after_title']; ?>
+		<?php endif; ?>
+		<?php if ( ! empty( $instance['description'] ) ): ?>
+			<div class="bpd-description">
+				<?php echo wpautop( esc_html( $instance['description'] ) ); ?>
+			</div>
+		<?php endif; ?>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="POST" target="_blank">
+			<input type="hidden" name="cmd" value="_donations" />
+			<input type="hidden" name="business" value="<?php echo $instance['email']; ?>" />
+			<?php if ( ! empty( $instance['purpose'] ) ): ?>
+				<input type="hidden" name="item_name" value="<?php echo $instance['purpose']; ?>" />
+			<?php endif; ?>
+			<?php if ( ! empty( $instance['amount'] ) ): ?>
+				<?php $amount = $instance['amount']; ?>
+			<?php else: ?>
+				<?php $amount = ''; ?>
+			<?php endif; ?>
+			$ <input type="text" name="amount" size="6" value="<?php echo $amount; ?>" required pattern="\d+(\.\d{2})?" placeholder="x.xx" />
+			<?php if ( ! empty( $instance['button_text'] ) ): ?>
+				<?php $button_text = $instance['button_text']; ?>
+			<?php else: ?>
+				<?php $button_text = static::$default_button_text; ?>
+			<?php endif; ?>
+			<button><?php echo $button_text; ?></button>
+		</form>
+		<?php echo $args['after_widget']; ?>
+		<?php
 	}
 
 	/**
@@ -62,7 +92,7 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'amount' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'amount' ) ); ?>" type="text" value="<?php echo esc_attr( $amount ); ?>" placeholder="x.xx" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'button_text' ) ); ?>">Button Text</label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'button_text' ) ); ?>">Button Text (required)</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button_text' ) ); ?>" type="text" value="<?php echo esc_attr( $button_text ); ?>" placeholder="<?php echo static::$default_button_text; ?>" />
 		</p>
 		<?php
