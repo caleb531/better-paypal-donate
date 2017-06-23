@@ -37,7 +37,7 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 		<?php endif; ?>
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="POST" target="_blank">
 			<input type="hidden" name="cmd" value="_donations" />
-			<input type="hidden" name="business" value="<?php echo $instance['email']; ?>" />
+			<input type="hidden" name="business" value="<?php echo antispambot( $instance['email'], true ); ?>" />
 			<?php if ( ! empty( $instance['purpose'] ) ): ?>
 				<input type="hidden" name="item_name" value="<?php echo $instance['purpose']; ?>" />
 			<?php endif; ?>
