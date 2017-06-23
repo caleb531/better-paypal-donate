@@ -31,9 +31,7 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 			<?php echo $args['before_title'], apply_filters( 'widget_title', $instance['title'] ), $args['after_title']; ?>
 		<?php endif; ?>
 		<?php if ( ! empty( $instance['description'] ) ): ?>
-			<div class="bpd-description">
-				<?php echo wpautop( esc_html( $instance['description'] ) ); ?>
-			</div>
+			<?php echo wpautop( esc_html( $instance['description'] ) ); ?>
 		<?php endif; ?>
 		<?php if ( ! empty( $instance['button_text'] ) ): ?>
 			<?php bpd_frontend_form( $instance, $instance['button_text'] ); ?>
