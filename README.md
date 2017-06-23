@@ -41,8 +41,8 @@ already styles. If you wish to apply custom styling to the widget, you can do so
 
 ```css
 .better-paypal-donate-widget button {
-	border: solid 1px #390;
-	background-color: #6c3;
-	color: #fff;
+  border: solid 1px #390;
+  background-color: #6c3;
+  color: #fff;
 }
 ```
