@@ -36,6 +36,7 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 	public function form( $instance ) {
 		$title = ( ! empty( $instance['title'] ) ? $instance['title'] : '' );
 		$description = ( ! empty( $instance['description'] ) ? $instance['description'] : '' );
+		$email = ( ! empty( $instance['email'] ) ? $instance['email'] : '' );
 		$purpose = ( ! empty( $instance['purpose'] ) ? $instance['purpose'] : '' );
 		$amount = ( ! empty( $instance['amount'] ) ? $instance['amount'] : '' );
 		$button_text = ( ! empty( $instance['button_text'] ) ? $instance['button_text'] : '' );
@@ -47,6 +48,10 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>">Description</label>
 			<textarea class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'description' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'description' ) ); ?>"><?php echo esc_html( $description ) ?></textarea>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>">PayPal Email (required)</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'email' ) ); ?>" type="email" value="<?php echo esc_attr( $email ); ?>" placeholder="The email for the account receiving the donation" />
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'purpose' ) ); ?>">Purpose</label>
