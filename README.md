@@ -34,6 +34,10 @@ Help support the work of missions around the globe.
 [donate-button purpose="Missions" amount="100"]Give[/donate-button]
 ```
 
+The shortcode can be inserted into any page/post content via the <img
+src="tinymce/button.png" alt="Toolbar Button" width="20" height="20" /> toolbar
+button in the visual editor.
+
 ### Note about styling
 
 This plugin adds no styling to the widget or shortcode beyond what your theme
