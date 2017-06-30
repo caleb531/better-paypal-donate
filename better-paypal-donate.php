@@ -24,6 +24,7 @@ class Better_PayPal_Donate_Plugin {
 	function __construct() {
 		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 		add_shortcode( 'donate-button', array( $this, 'do_shortcode' ) );
+		add_action( 'init', array( $this, 'init_shortcode_button' ) );
 	}
 
 	/**
@@ -40,6 +41,37 @@ class Better_PayPal_Donate_Plugin {
 		ob_start();
 		bpd_frontend_form( $args, $content );
 		return ob_get_clean();
+	}
+
+
+	/**
+	 * Add a toolbar button to the visual editor for inserting the shortcode
+	 */
+	public function init_shortcode_button() {
+		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+			return;
+		}
+		if ( get_user_option( 'rich_editing' ) !== 'true' ) {
+			return;
+		}
+		add_filter( 'mce_buttons_2', array( $this, 'register_button_name' ) );
+		add_filter( 'mce_external_plugins', array( $this, 'register_button_script' ) );
+	}
+
+	/**
+	 * Register the toolbar button name
+	 */
+	public function register_button_name( $buttons ) {
+	    array_push( $buttons, 'better_paypal_donate' );
+	    return $buttons;
+	}
+
+	/**
+	 * Register the JavaScript for the toolbar button
+	 */
+	public function register_button_script( $plugins ) {
+	    $plugins['better_paypal_donate'] = plugins_url( '/tinymce/button.js', __FILE__ );
+	    return $plugins;
 	}
 
 }
