@@ -6,7 +6,7 @@ Description: Better PayPal Donate is a WordPress plugin I created because other 
 Author: Caleb Evans
 Author URI: https://calebevans.me/
 Version: 0.3.0
-License: GNU General Public License v2.0
+License: GNU General Public License v2.0 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 

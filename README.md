@@ -1,7 +1,7 @@
 # Better PayPal Donate
 
 *Copyright 2017 Caleb Evans*  
-*Released under the GNU General Public License v2.0*
+*Released under the GNU General Public License v2.0 or later*
 
 Better PayPal Donate is a WordPress plugin I created because other PayPal donate
 plugins were too complicated or feature-lacking for my needs. The project is
