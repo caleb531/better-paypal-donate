@@ -54,6 +54,7 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 		$purpose = ( ! empty( $instance['purpose'] ) ? $instance['purpose'] : '' );
 		$amount = ( ! empty( $instance['amount'] ) ? $instance['amount'] : '' );
 		$button_text = ( ! empty( $instance['button_text'] ) ? $instance['button_text'] : '' );
+		$button_id = ( ! empty( $instance['button_id'] ) ? $instance['button_id'] : '' );
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">Title</label>
@@ -78,6 +79,10 @@ class Better_PayPal_Donate_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'button_text' ) ); ?>">Button Text (required)</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button_text' ) ); ?>" type="text" value="<?php echo esc_attr( $button_text ); ?>" placeholder="<?php echo static::$default_button_text; ?>" />
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'button_id' ) ); ?>">Button ID (if provided by PayPal)</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'button_id' ) ); ?>" type="text" value="<?php echo esc_attr( $button_id ); ?>" />
 		</p>
 		<?php
 	}
