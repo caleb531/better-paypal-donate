@@ -19,7 +19,9 @@ function bpd_frontend_form( $args, $button_text ) {
 		<?php else: ?>
 			<?php $amount = ''; ?>
 		<?php endif; ?>
-		$ <input type="text" name="amount" size="6" value="<?php echo $amount; ?>" required pattern="\d+(\.\d{2})?" placeholder="x.xx" />
+		<?php if ( empty( $args['button_id'] ) ): ?>
+			$ <input type="text" name="amount" size="6" value="<?php echo $amount; ?>" required pattern="\d+(\.\d{2})?" placeholder="x.xx" />
+		<?php endif; ?>
 		<button><?php echo $button_text; ?></button>
 	</form>
 	<?php
